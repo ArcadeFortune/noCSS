@@ -1,15 +1,11 @@
 var HTMLPosition;
 (function (HTMLPosition) {
     HTMLPosition[HTMLPosition["ABOVE"] = 0] = "ABOVE";
-    HTMLPosition[HTMLPosition["RIGHT"] = 1] = "RIGHT";
-    HTMLPosition[HTMLPosition["BELOW"] = 2] = "BELOW";
-    HTMLPosition[HTMLPosition["LEFT"] = 3] = "LEFT";
+    HTMLPosition[HTMLPosition["BELOW"] = 1] = "BELOW";
 })(HTMLPosition || (HTMLPosition = {}));
 var NoDOM = (function () {
     function NoDOM() {
-        this.doc = document.createDocumentFragment();
-        this.previewDoc = document.querySelector('main');
-        this.previewDoc.appendChild(this.doc);
+        this.doc = document.querySelector('main');
     }
     NoDOM.prototype.addElement = function (element, targetElement, position) {
         if (targetElement === void 0) { targetElement = null; }
@@ -17,15 +13,9 @@ var NoDOM = (function () {
         switch (position) {
             case HTMLPosition.ABOVE:
                 this.doc.insertBefore(element, targetElement);
-                this.previewDoc.insertBefore(element, targetElement);
-                break;
-            case HTMLPosition.RIGHT:
                 break;
             case HTMLPosition.BELOW:
                 this.doc.insertBefore(element, targetElement === null || targetElement === void 0 ? void 0 : targetElement.nextElementSibling);
-                this.previewDoc.insertBefore(element, targetElement === null || targetElement === void 0 ? void 0 : targetElement.nextElementSibling);
-                break;
-            case HTMLPosition.LEFT:
                 break;
         }
         return element;
