@@ -1,21 +1,17 @@
-enum HTMLPosition {
-  ABOVE,
-  BELOW,
-}
-
+//to be removed
 interface NoDOMInterface {
-  addElement(element: HTMLElement, targetElement: HTMLElement, position: HTMLPosition): HTMLElement;
+  addElement(element: HTMLElement, targetElement: HTMLElement, position: Direction): HTMLElement;
   exportRaw(): HTMLElement;
 }
 
 class NoDOM implements NoDOMInterface {
   private doc: HTMLElement = document.querySelector('main');
-  public addElement(element: HTMLElement, targetElement: HTMLElement = null, position: HTMLPosition = HTMLPosition.BELOW): HTMLElement {
+  public addElement(element: HTMLElement, targetElement: HTMLElement = null, position: Direction = Direction.BELOW): HTMLElement {
     switch (position) {
-      case HTMLPosition.ABOVE:
+      case Direction.ABOVE:
         this.doc.insertBefore(element, targetElement);
         break;
-      case HTMLPosition.BELOW:
+      case Direction.BELOW:
         this.doc.insertBefore(element, targetElement?.nextElementSibling);
         break;
     }
@@ -36,7 +32,7 @@ function test() {
 }
 
 function test2(el: HTMLElement) {
-  dom.addElement(document.createElement('h1'), el, HTMLPosition.ABOVE);
+  dom.addElement(document.createElement('h1'), el, Direction.ABOVE);
 }
 
 function exportRaw() {
