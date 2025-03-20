@@ -1,0 +1,31 @@
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-weight: bold; /* Makes all headings bold */
+  margin: 0 0 10px; /* Adds spacing below each heading */
+}
+
+/* Specific styling for each heading */
+h1, .h1 {
+  font-size: 2.5rem; /* 40px */
+}
+
+h2, .h2 {
+  font-size: 2rem; /* 32px */
+}
+
+h3, .h3 {
+  font-size: 1.75rem; /* 28px */
+}
+
+h4, .h4 {
+  font-size: 1.5rem; /* 24px */
+}
+
+h5, .h5 {
+  font-size: 1.25rem; /* 20px */
+}
+
+h6, .h6 {
+  font-size: 1rem; /* 16px */
+  font-weight: normal; /* Optionally make h6 less bold */
+}

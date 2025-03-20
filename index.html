@@ -1,23 +1,23 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="./css/style.css">
-  <link rel="stylesheet" href="./css/normalize.css">
-  <link rel="stylesheet" href="./css/variables.css">
-</head>
-<body>
-  <main class="editor">
-    <aside class="editor-tools">
-      <button onclick="test()">test</button>
-      <button onclick="exportRaw()">export</button>
-    </aside>
-    <section class="editor-preview">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + TS</title>
+  </head>
+  <body>
+    <div class="toolbar">
+      <p class="title h1">Elements</p>
+      <div class="buttons">
+        <button class="element" draggable="true" data-element="h1">
+          Header 1
+        </button>
+      </div>
+    </div>
+    <div class="page">
 
-    </section>
-  </main>
-  <script type="module" src="./js/main.js "></script>
-</body>
+    </div>
+    <script type="module" src="/src/index.ts"></script>
+  </body>
 </html>
