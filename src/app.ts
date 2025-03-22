@@ -1,17 +1,20 @@
+import { config } from "./_config";
 import "./css/app.css";
+import { createElement } from "./functions/drag";
 import { DraggedElementData } from "./types/draggedItemData";
 
 export function app() {
   const dragableElements: NodeListOf<HTMLElement> = document.querySelectorAll(".toolbar .element");
   const pageZone: HTMLElement | null = document.querySelector(".page");
 
+  let currentDraggedElementData: DraggedElementData | null = null;
+
   dragableElements.forEach((dragable) => {
     dragable.addEventListener("dragstart", (event: DragEvent) => {
-      if (!event.dataTransfer) return;
       if (!dragable.dataset.element) return event.preventDefault();
-      event.setDragData<DraggedElementData>({
-        HTMLElement: dragable.dataset.element as keyof HTMLElementTagNameMap
-      });
+      currentDraggedElementData = Object.fromEntries(
+        Object.entries(dragable.dataset)
+      ) as unknown as DraggedElementData;
     });
   });
 
@@ -21,7 +24,9 @@ export function app() {
 
   pageZone?.addEventListener("drop", (event) => {
     if (!event.dataTransfer) return;
-    const data = event.getDragData<DraggedElementData>();
-    console.log("data is", data);
+    if (!currentDraggedElementData) return;
+    const data = currentDraggedElementData;
+    createElement(event, data)
+    console.log(data)
   });
 }

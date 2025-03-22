@@ -1,3 +1,4 @@
 export interface DraggedElementData {
-  HTMLElement: keyof HTMLElementTagNameMap;
+  element?: keyof HTMLElementTagNameMap;
+  defaultText?: string;
 }
